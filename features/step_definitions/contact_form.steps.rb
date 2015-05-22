@@ -24,7 +24,7 @@ end
 
 Then(/^an email should be sent to @incoming\.intercom\.io$/) do
   @last_email = ActionMailer::Base.deliveries.last
-  @last_email.to.should include "@incoming.intercom.io"
+  @last_email.to.first.should include "@incoming.intercom.io"
 end
 
 Then(/^the message should be saved to the database$/) do
