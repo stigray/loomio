@@ -12,11 +12,7 @@ UsernameGenerator = Struct.new(:user) do
   private
 
   def base_username
-    (user.name || user.email).split('@').first      # all characters before '@'
-                             .parameterize          # convert ascii chars
-                             .downcase              # all lower case
-                             .gsub(/[^a-z0-9]/, '') # alphanumeric
-                             .slice(0,18)           # first 18 characters
+    user.name.parameterize('')[0,18]
   end
 
   def conflicts
